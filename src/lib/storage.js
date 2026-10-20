@@ -1,5 +1,5 @@
 const KEY = 'ingles-ya:progress'
-const API_KEY = 'ingles-ya:anthropic-key'
+const API_KEY = 'ingles-ya:gemini-key'
 
 const today = () => new Date().toISOString().slice(0, 10)
 const yesterday = () => new Date(Date.now() - 864e5).toISOString().slice(0, 10)
