@@ -1,11 +1,15 @@
 export const canSpeak = () => 'speechSynthesis' in window
 
-export function speak(text, rate = 0.9) {
-  if (!canSpeak()) return
+export function speak(text, rate = 0.9, onend) {
+  if (!canSpeak()) return onend?.()
   window.speechSynthesis.cancel()
   const u = new SpeechSynthesisUtterance(text)
   u.lang = 'en-US'
   u.rate = rate
+  if (onend) {
+    u.onend = onend
+    u.onerror = onend
+  }
   window.speechSynthesis.speak(u)
 }
 
